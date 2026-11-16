@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FLOOR PLAN - THE OLIO STORE KIOSK</title>
+  <!-- Google Font: Crimson Pro -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Crimson Pro', Georgia, serif;
+      background-color: #f3f4f6;
+      color: #111111;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 24px;
+    }
+
+    /* A4/Letter Sheet Container */
+    .sheet {
+      background: #ffffff;
+      width: 100%;
+      max-width: 1050px;
+      aspect-ratio: 1100 / 980;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      padding: 12px;
+    }
+
+    svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    svg text {
+      font-family: 'Crimson Pro', Georgia, serif;
+    }
+
+    /* Clean Print / PDF Export Rules */
+    @page {
+      size: A4 landscape;
+      margin: 8mm;
+    }
+
+    @media print {
+      body {
+        background: #ffffff;
+        padding: 0;
+        min-height: auto;
+      }
+
+      .toolbar {
+        display: none !important;
+      }
+
+      .sheet {
+        box-shadow: none;
+        max-width: 100%;
+        width: 100%;
+        height: 96vh;
+        padding: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Centered Vector Architectural Sheet -->
+  <div class="sheet">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 980">
+      <defs>
+        <!-- Limestone / Masonry / Brick Hatching -->
+        <pattern id="hatch-limestone" width="10" height="10" patternTransform="rotate(45 0 0)" patternUnits="userSpaceOnUse">
+          <line x1="0" y1="0" x2="0" y2="10" stroke="#222222" stroke-width="0.9" />
+        </pattern>
+
+        <!-- Wood / Dark Walnut Hatching -->
+        <pattern id="hatch-wood" width="24" height="16" patternUnits="userSpaceOnUse">
+          <rect width="24" height="16" fill="#f7f4ef" />
+          <path d="M 0 4 Q 12 1, 24 4" fill="none" stroke="#3b2818" stroke-width="0.85" />
+          <path d="M 0 9 Q 12 13, 24 9" fill="none" stroke="#3b2818" stroke-width="0.85" />
+          <path d="M 0 14 Q 12 11, 24 14" fill="none" stroke="#3b2818" stroke-width="0.85" />
+        </pattern>
+
+        <!-- Metal / Aged Brass Hatching -->
+        <pattern id="hatch-metal" width="14" height="14" patternTransform="rotate(45 0 0)" patternUnits="userSpaceOnUse">
+          <line x1="0" y1="0" x2="0" y2="14" stroke="#1a1a1a" stroke-width="0.9" />
+          <line x1="4" y1="0" x2="4" y2="14" stroke="#1a1a1a" stroke-width="0.6" />
+          <circle cx="9" cy="4" r="0.8" fill="#1a1a1a" />
+          <circle cx="9" cy="11" r="0.8" fill="#1a1a1a" />
+        </pattern>
+
+        <!-- Concrete / Structural Core Hatching -->
+        <pattern id="hatch-concrete" width="18" height="18" patternUnits="userSpaceOnUse">
+          <polygon points="4,4 7,9 2,9" fill="none" stroke="#222222" stroke-width="0.7" />
+          <circle cx="13" cy="5" r="0.9" fill="#222222" />
+          <circle cx="11" cy="14" r="0.8" fill="#222222" />
+          <circle cx="4" cy="15" r="0.7" fill="#222222" />
+        </pattern>
+
+        <!-- Fluted Glass Hatching -->
+        <pattern id="hatch-glass" width="6" height="6" patternTransform="rotate(-45 0 0)" patternUnits="userSpaceOnUse">
+          <line x1="0" y1="0" x2="0" y2="6" stroke="#4a6b7c" stroke-width="0.6" stroke-dasharray="2,2" />
+        </pattern>
+
+        <!-- Architectural 45-degree Tick Marker for Dimension Lines -->
+        <marker id="dim-tick" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+          <line x1="1" y1="9" x2="9" y2="1" stroke="#000000" stroke-width="1.4" />
+        </marker>
+      </defs>
+
+      <!-- DRAWING HEADER -->
+      <g id="title-header">
+        <text x="550" y="55" text-anchor="middle" font-size="24" font-weight="700" letter-spacing="2.5" fill="#111111">FLOOR PLAN - THE OLIO STORE KIOSK</text>
+        <line x1="140" y1="80" x2="960" y2="80" stroke="#111111" stroke-width="1.2" />
+      </g>
+
+      <!-- MAIN PLAN COORDINATE GROUP (Centered Horizontally & Vertically) -->
+      <g id="kiosk-plan" transform="translate(0, 15)">
+
+        <!-- 1. OVERHEAD ARCHED CANOPY PROJECTION (Dashed Line Above 1350mm Cut Plane) -->
+        <path d="M 190 130 L 910 130 L 910 695 Q 910 850 755 850 L 345 850 Q 190 850 190 695 Z"
+              fill="none" stroke="#555555" stroke-width="1.1" stroke-dasharray="8,5" />
+
+        <!-- 3. CUT PERIMETER WALLS (Double Heavy Lines + Material Hatch) -->
+        <path d="M 235 425 L 235 175 L 865 175 L 865 425 L 830 425 L 830 210 L 270 210 L 270 425 Z"
+              fill="url(#hatch-limestone)" stroke="#000000" stroke-width="2.4" />
+
+        <path d="M 235 555 L 235 665 Q 235 805 375 805 L 465 805 L 465 770 L 375 770 Q 270 770 270 665 L 270 555 Z"
+              fill="url(#hatch-limestone)" stroke="#000000" stroke-width="2.4" />
+
+        <path d="M 865 555 L 865 665 Q 865 805 725 805 L 635 805 L 635 770 L 725 770 Q 830 770 830 665 L 830 555 Z"
+              fill="url(#hatch-limestone)" stroke="#000000" stroke-width="2.4" />
+
+        <!-- Structural Corner Columns -->
+        <rect x="235" y="175" width="35" height="35" fill="url(#hatch-concrete)" stroke="#000000" stroke-width="2.4" />
+        <rect x="830" y="175" width="35" height="35" fill="url(#hatch-concrete)" stroke="#000000" stroke-width="2.4" />
+
+        <!-- 4. FULL-HEIGHT MIRROR PANELS -->
+        <g id="left-mirror-panel">
+          <rect x="235" y="425" width="35" height="130" fill="#ffffff" stroke="#000000" stroke-width="1.8" />
+          <rect x="235" y="425" width="35" height="12" fill="url(#hatch-metal)" stroke="#000000" stroke-width="1.8" />
+          <rect x="235" y="543" width="35" height="12" fill="url(#hatch-metal)" stroke="#000000" stroke-width="1.8" />
+          <rect x="248" y="437" width="9" height="106" fill="url(#hatch-glass)" stroke="#000000" stroke-width="1.4" />
+          <line x1="252.5" y1="437" x2="252.5" y2="543" stroke="#000000" stroke-width="0.9" />
+        </g>
+
+        <g id="right-mirror-panel">
+          <rect x="830" y="425" width="35" height="130" fill="#ffffff" stroke="#000000" stroke-width="1.8" />
+          <rect x="830" y="425" width="35" height="12" fill="url(#hatch-metal)" stroke="#000000" stroke-width="1.8" />
+          <rect x="830" y="543" width="35" height="12" fill="url(#hatch-metal)" stroke="#000000" stroke-width="1.8" />
+          <rect x="843" y="437" width="9" height="106" fill="url(#hatch-glass)" stroke="#000000" stroke-width="1.4" />
+          <line x1="847.5" y1="437" x2="847.5" y2="543" stroke="#000000" stroke-width="0.9" />
+        </g>
+
+        <!-- 5. STAFF STORAGE & SERVICE ROOM -->
+        <g id="staff-storage">
+          <rect x="270" y="312" width="75" height="14" fill="url(#hatch-wood)" stroke="#000000" stroke-width="2.2" />
+          <rect x="395" y="210" width="14" height="32" fill="url(#hatch-wood)" stroke="#000000" stroke-width="2.2" />
+          <rect x="395" y="302" width="14" height="24" fill="url(#hatch-wood)" stroke="#000000" stroke-width="2.2" />
+
+          <rect x="272" y="212" width="121" height="24" fill="none" stroke="#444444" stroke-width="0.9" />
+          <line x1="312" y1="212" x2="312" y2="236" stroke="#444444" stroke-width="0.8" />
+          <line x1="352" y1="212" x2="352" y2="236" stroke="#444444" stroke-width="0.8" />
+          <rect x="272" y="236" width="22" height="74" fill="none" stroke="#444444" stroke-width="0.9" />
+
+          <rect x="398" y="242" width="60" height="6" fill="url(#hatch-wood)" stroke="#000000" stroke-width="1.6" />
+          <path d="M 458 245 A 60 60 0 0 1 398 302" fill="none" stroke="#000000" stroke-width="1.0" stroke-dasharray="4,3" />
+        </g>
+
+        <!-- 6. BUILT-IN JEWELLERY DISPLAY PANELS & PERIMETER CABINETRY -->
+        <g id="back-wall-displays">
+          <rect x="420" y="210" width="400" height="44" fill="#fafafa" stroke="#333333" stroke-width="1.0" />
+          <rect x="425" y="210" width="390" height="34" fill="url(#hatch-wood)" stroke="#000000" stroke-width="2.0" />
+          <rect x="435" y="216" width="84" height="22" fill="#ffffff" stroke="#000000" stroke-width="1.3" />
+          <rect x="530" y="216" width="84" height="22" fill="#ffffff" stroke="#000000" stroke-width="1.3" />
+          <rect x="625" y="216" width="84" height="22" fill="#ffffff" stroke="#000000" stroke-width="1.3" />
+          <rect x="720" y="216" width="85" height="22" fill="#ffffff" stroke="#000000" stroke-width="1.3" />
+          <line x1="425" y1="241" x2="815" y2="241" stroke="#000000" stroke-width="1.2" />
+        </g>
+
+        <g id="left-upper-display">
+          <rect x="270" y="334" width="42" height="84" fill="#fafafa" stroke="#333333" stroke-width="1.0" />
+          <rect x="270" y="338" width="34" height="76" fill="url(#hatch-wood)" stroke="#000000" stroke-width="2.0" />
+          <rect x="276" y="346" width="22" height="60" fill="#ffffff" stroke="#000000" stroke-width="1.3" />
+        </g>
+
+        <g id="left-lower-display">
+          <rect x="270" y="562" width="42" height="93" fill="#f9f9f9" stroke="#222222" stroke-width="1.1" />
+          <rect x="275" y="568" width="32" height="81" fill="none" stroke="#444444" stroke-width="0.8" />
+          <line x1="275" y1="608" x2="307" y2="608" stroke="#444444" stroke-width="0.8" />
+        </g>
+
+        <g id="right-wall-displays">
+          <rect x="788" y="254" width="42" height="164" fill="#fafafa" stroke="#333333" stroke-width="1.0" />
+          <rect x="796" y="258" width="34" height="156" fill="url(#hatch-wood)" stroke="#000000" stroke-width="2.0" />
+          <rect x="802" y="266" width="22" height="64" fill="#ffffff" stroke="#000000" stroke-width="1.3" />
+          <rect x="802" y="342" width="22" height="64" fill="#ffffff" stroke="#000000" stroke-width="1.3" />
+
+          <rect x="788" y="562" width="42" height="93" fill="#f9f9f9" stroke="#222222" stroke-width="1.1" />
+          <rect x="793" y="568" width="32" height="81" fill="none" stroke="#444444" stroke-width="0.8" />
+          <line x1="793" y1="608" x2="825" y2="608" stroke="#444444" stroke-width="0.8" />
+        </g>
+
+        <!-- Front-Left Curved Corner Display Shelves -->
+        <g id="front-left-curved-display">
+          <path d="M 270 660 Q 270 770 380 770 L 460 770 L 460 728 L 380 728 Q 312 728 312 660 Z"
+                fill="#f7f5f0" stroke="#222222" stroke-width="1.2" />
+          <path d="M 282 666 Q 282 758 378 758 L 452 758 L 452 736 L 378 736 Q 302 736 302 666 Z"
+                fill="none" stroke="#444444" stroke-width="0.8" />
+          <line x1="286" y1="696" x2="305" y2="692" stroke="#444444" stroke-width="0.8" />
+          <line x1="312" y1="734" x2="326" y2="718" stroke="#444444" stroke-width="0.8" />
+          <line x1="358" y1="756" x2="362" y2="736" stroke="#444444" stroke-width="0.8" />
+          <line x1="406" y1="758" x2="406" y2="736" stroke="#444444" stroke-width="0.8" />
+        </g>
+
+        <!-- Front-Right Curved Corner Display Shelves -->
+        <g id="front-right-curved-display">
+          <path d="M 830 660 Q 830 770 720 770 L 640 770 L 640 728 L 720 728 Q 788 728 788 660 Z"
+                fill="#f7f5f0" stroke="#222222" stroke-width="1.2" />
+          <path d="M 818 666 Q 818 758 722 758 L 648 758 L 648 736 L 722 736 Q 798 736 798 666 Z"
+                fill="none" stroke="#444444" stroke-width="0.8" />
+          <line x1="814" y1="696" x2="795" y2="692" stroke="#444444" stroke-width="0.8" />
+          <line x1="788" y1="734" x2="774" y2="718" stroke="#444444" stroke-width="0.8" />
+          <line x1="742" y1="756" x2="738" y2="736" stroke="#444444" stroke-width="0.8" />
+          <line x1="694" y1="758" x2="694" y2="736" stroke="#444444" stroke-width="0.8" />
+        </g>
+
+        <!-- 7. INTERIOR CIRCULATION ZONE LINE -->
+        <path d="M 332 340 L 768 340 L 768 655 Q 768 710 710 710 L 390 710 Q 332 710 332 655 Z"
+              fill="none" stroke="#666666" stroke-width="0.9" stroke-dasharray="6,4" />
+
+        <!-- 8. CURVED BILLING & SERVICE COUNTER -->
+        <g id="billing-service-counter">
+          <path d="M 358 442 C 358 498, 462 498, 462 412 C 462 396, 434 396, 434 412 C 434 466, 386 466, 386 442 C 386 426, 358 426, 358 442 Z"
+                fill="#f4efe6" stroke="#1a1a1a" stroke-width="1.3" />
+          <path d="M 364 442 C 364 490, 456 490, 456 412 C 456 402, 440 402, 440 412 C 440 473, 380 473, 380 442 C 380 432, 364 432, 364 442 Z"
+                fill="none" stroke="#555555" stroke-width="0.8" />
+          <rect x="424" y="446" width="14" height="10" rx="2" transform="rotate(-35 431 451)" fill="#ffffff" stroke="#333333" stroke-width="0.8" />
+          <circle cx="402" cy="422" r="12" fill="none" stroke="#444444" stroke-width="0.9" stroke-dasharray="3,2" />
+        </g>
+
+        <!-- 9. CENTRAL ORGANIC GLASS-TOP JEWELLERY DISPLAY ISLAND -->
+        <g id="central-jewellery-island">
+          <path d="M 412 575 C 392 535, 442 505, 492 492 C 538 480, 562 432, 616 442 C 668 452, 682 518, 636 568 C 594 614, 536 628, 488 648 C 444 666, 428 608, 412 575 Z"
+                fill="#f7f5f0" stroke="#1a1a1a" stroke-width="1.4" />
+          <path d="M 421 572 C 403 538, 448 512, 496 499 C 542 487, 565 442, 614 451 C 659 460, 671 518, 629 563 C 589 606, 534 619, 488 638 C 449 654, 435 602, 421 572 Z"
+                fill="none" stroke="#333333" stroke-width="0.9" />
+          <path d="M 442 566 C 430 544, 464 525, 506 513 C 548 501, 568 464, 608 472 C 642 479, 650 522, 616 557 C 583 591, 534 602, 492 618 C 462 630, 452 588, 442 566 Z"
+                fill="url(#hatch-glass)" stroke="#222222" stroke-width="1.0" />
+          <rect x="462" y="552" width="22" height="16" rx="2" transform="rotate(-22 473 560)" fill="#ffffff" stroke="#444444" stroke-width="0.8" />
+          <rect x="504" y="532" width="24" height="16" rx="2" transform="rotate(-28 516 540)" fill="#ffffff" stroke="#444444" stroke-width="0.8" />
+          <rect x="548" y="505" width="24" height="16" rx="2" transform="rotate(-35 560 513)" fill="#ffffff" stroke="#444444" stroke-width="0.8" />
+          <rect x="592" y="486" width="22" height="16" rx="2" transform="rotate(15 603 494)" fill="#ffffff" stroke="#444444" stroke-width="0.8" />
+          <rect x="596" y="528" width="22" height="16" rx="2" transform="rotate(48 607 536)" fill="#ffffff" stroke="#444444" stroke-width="0.8" />
+          <rect x="556" y="566" width="24" height="16" rx="2" transform="rotate(32 568 574)" fill="#ffffff" stroke="#444444" stroke-width="0.8" />
+          <rect x="510" y="586" width="24" height="16" rx="2" transform="rotate(20 522 594)" fill="#ffffff" stroke="#444444" stroke-width="0.8" />
+        </g>
+
+        <!-- 10. OPEN ENTRANCE THRESHOLD & ENTRY ARROWS -->
+        <g id="open-entrance">
+          <line x1="465" y1="770" x2="635" y2="770" stroke="#555555" stroke-width="0.9" stroke-dasharray="4,3" />
+          <line x1="465" y1="805" x2="635" y2="805" stroke="#555555" stroke-width="0.9" stroke-dasharray="4,3" />
+          <line x1="535" y1="825" x2="535" y2="752" stroke="#111111" stroke-width="1.2" />
+          <polyline points="530,759 535,751 540,759" fill="none" stroke="#111111" stroke-width="1.2" />
+          <line x1="565" y1="752" x2="565" y2="825" stroke="#111111" stroke-width="1.2" />
+          <polyline points="560,818 565,826 570,818" fill="none" stroke="#111111" stroke-width="1.2" />
+        </g>
+
+        <!-- ARCHITECTURAL DIMENSION LINES (ALL IN MILLIMETERS, SUMMING TO 1800) -->
+        <g id="dimensions" font-size="10.5" font-weight="600" fill="#000000" stroke="#000000" stroke-width="0.85">
+          <!-- Left Overall Dimension -->
+          <line x1="155" y1="175" x2="230" y2="175" stroke-width="0.6" />
+          <line x1="155" y1="805" x2="365" y2="805" stroke-width="0.6" />
+          <line x1="162" y1="175" x2="162" y2="805" marker-start="url(#dim-tick)" marker-end="url(#dim-tick)" />
+          <text x="152" y="490" text-anchor="middle" transform="rotate(-90 152 490)" stroke="none">1800</text>
+
+          <!-- Inner Left Breakdown Chain -->
+          <line x1="185" y1="175" x2="230" y2="175" stroke-width="0.6" />
+          <line x1="185" y1="210" x2="230" y2="210" stroke-width="0.6" />
+          <line x1="185" y1="322" x2="230" y2="322" stroke-width="0.6" />
+          <line x1="185" y1="425" x2="230" y2="425" stroke-width="0.6" />
+          <line x1="185" y1="555" x2="230" y2="555" stroke-width="0.6" />
+          <line x1="185" y1="665" x2="230" y2="665" stroke-width="0.6" />
+          <line x1="185" y1="805" x2="365" y2="805" stroke-width="0.6" />
+
+          <line x1="192" y1="175" x2="192" y2="210" marker-start="url(#dim-tick)" marker-end="url(#dim-tick)" />
+          <text x="183" y="196" text-anchor="middle" font-size="9" transform="rotate(-90 183 196)" stroke="none">100</text>
+
+          <line x1="192" y1="210" x2="192" y2="322" marker-start="url(#dim-tick)" marker-end="url(#dim-tick)" />
+          <text x="183" y="266" text-anchor="middle" font-size="9.5" transform="rotate(-90 183 266)" stroke="none">320</text>
+
+          <line x1="192" y1="322" x2="192" y2="425" marker-start="url(#dim-tick)" marker-end="url(#dim-tick)" />
+          <text x="183" y="374" text-anchor="middle" font-size="9.5" transform="rotate(-90 183 374)" stroke="none">295</text>
+
+          <line x1="192" y1="425" x2="192" y2="555" marker-start="url(#dim-tick)" marker-end="url(#dim-tick)" />
+          <text x="183" y="490" text-anchor="middle" font-size="9.5" transform="rotate(-90 183 490)" stroke="none">370</text>
+
+          <line x1="192" y1="555" x2="192" y2="665" marker-start="url(#dim-tick)" marker-end="url(#dim-tick)" />
+          <text x="183" y="610" text-anchor="middle" font-size="9.5" transform="rotate(-90 183 610)" stroke="none">315</text>
+
+          <line x1="192" y1="665" x2="192" y2="805" marker-start="url(#dim-tick)" marker-end="url(#dim-tick)" />
+          <text x="183" y="735" text-anchor="middle" font-size="9.5" transform="rotate(-90 183 735)" stroke="none">400</text>
+
+          <!-- Bottom Breakdown Chain -->
+          <line x1="235" y1="670" x2="235" y2="875" stroke-width="0.6" />
+          <line x1="375" y1="810" x2="375" y2="875" stroke-width="0.6" />
+          <line x1="465" y1="810" x2="465" y2="875" stroke-width="0.6" />
+          <line x1="635" y1="810" x2="635" y2="875" stroke-width="0.6" />
+          <line x1="725" y1="810" x2="725" y2="875" stroke-width="0.6" />
+          <line x1="865" y1="670" x2="865" y2="875" stroke-width="0.6" />
+
+          <line x1="235" y1="868" x2="375" y2="868" marker-start="url(#dim-tick)" marker-end="url(#dim-tick)" />
+          <text x="305" y="862" text-anchor="middle" font-size="9.5" stroke="none">400</text>
+
+          <line x1="375" y1="868" x2="465" y2="868" marker-start="url(#dim-tick)" marker-end="url(#dim-tick)" />
+          <text x="420" y="862" text-anchor="middle" font-size="9.5" stroke="none">255</text>
+
+          <line x1="465" y1="868" x2="635" y2="868" marker-start="url(#dim-tick)" marker-end="url(#dim-tick)" />
+          <text x="550" y="862" text-anchor="middle" font-size="9.5" stroke="none">490 (ENTRANCE)</text>
+
+          <line x1="635" y1="868" x2="725" y2="868" marker-start="url(#dim-tick)" marker-end="url(#dim-tick)" />
+          <text x="680" y="862" text-anchor="middle" font-size="9.5" stroke="none">255</text>
+
+          <line x1="725" y1="868" x2="865" y2="868" marker-start="url(#dim-tick)" marker-end="url(#dim-tick)" />
+          <text x="795" y="862" text-anchor="middle" font-size="9.5" stroke="none">400</text>
+
+          <!-- Bottom Overall Dimension -->
+          <line x1="235" y1="875" x2="235" y2="905" stroke-width="0.6" />
+          <line x1="865" y1="875" x2="865" y2="905" stroke-width="0.6" />
+          <line x1="235" y1="898" x2="865" y2="898" marker-start="url(#dim-tick)" marker-end="url(#dim-tick)" />
+          <text x="550" y="892" text-anchor="middle" stroke="none">1800</text>
+
+          <!-- Top Horizontal Internal Dimension Chain -->
+          <line x1="235" y1="145" x2="235" y2="170" stroke-width="0.6" />
+          <line x1="270" y1="145" x2="270" y2="170" stroke-width="0.6" />
+          <line x1="402" y1="145" x2="402" y2="205" stroke-width="0.6" />
+          <line x1="830" y1="145" x2="830" y2="170" stroke-width="0.6" />
+          <line x1="865" y1="145" x2="865" y2="170" stroke-width="0.6" />
+
+          <line x1="235" y1="152" x2="270" y2="152" marker-start="url(#dim-tick)" marker-end="url(#dim-tick)" />
+          <text x="252.5" y="146" text-anchor="middle" font-size="9" stroke="none">100</text>
+
+          <line x1="270" y1="152" x2="402" y2="152" marker-start="url(#dim-tick)" marker-end="url(#dim-tick)" />
+          <text x="336" y="146" text-anchor="middle" font-size="9.5" stroke="none">380</text>
+
+          <line x1="402" y1="152" x2="830" y2="152" marker-start="url(#dim-tick)" marker-end="url(#dim-tick)" />
+          <text x="616" y="146" text-anchor="middle" font-size="9.5" stroke="none">1220</text>
+
+          <line x1="830" y1="152" x2="865" y2="152" marker-start="url(#dim-tick)" marker-end="url(#dim-tick)" />
+          <text x="847.5" y="146" text-anchor="middle" font-size="9" stroke="none">100</text>
+
+          <!-- Internal Clearance Dimensions -->
+          <line x1="312" y1="560" x2="414" y2="560" stroke="#333333" stroke-width="0.8" marker-start="url(#dim-tick)" marker-end="url(#dim-tick)" />
+          <text x="363" y="555" text-anchor="middle" font-size="9" fill="#222222" stroke="none">290</text>
+
+          <line x1="656" y1="530" x2="788" y2="530" stroke="#333333" stroke-width="0.8" marker-start="url(#dim-tick)" marker-end="url(#dim-tick)" />
+          <text x="722" y="525" text-anchor="middle" font-size="9" fill="#222222" stroke="none">375</text>
+
+          <line x1="590" y1="254" x2="590" y2="442" stroke="#333333" stroke-width="0.8" marker-start="url(#dim-tick)" marker-end="url(#dim-tick)" />
+          <text x="605" y="348" text-anchor="middle" font-size="9" transform="rotate(-90 605 348)" fill="#222222" stroke="none">535</text>
+        </g>
+
+        <!-- ARCHITECTURAL CALLOUT ANNOTATIONS & LEADER LINES -->
+        <g id="callouts" font-size="9.5" font-weight="600" fill="#111111">
+          <text x="333" y="272" text-anchor="middle" font-size="9.5">STAFF</text>
+          <text x="333" y="284" text-anchor="middle" font-size="9.5">STORAGE</text>
+          <text x="333" y="295" text-anchor="middle" font-size="8" fill="#555555">(380×320)</text>
+
+          <text x="432" y="284" text-anchor="middle" font-size="8.5" fill="#333333">DOOR SWING</text>
+
+          <polyline points="620,226 645,192 675,192" fill="none" stroke="#111111" stroke-width="0.8" />
+          <text x="680" y="195" text-anchor="start" font-size="9">BUILT-IN JEWELLERY DISPLAY (CUT)</text>
+
+          <polyline points="285,375 110,375" fill="none" stroke="#111111" stroke-width="0.8" />
+          <text x="105" y="371" text-anchor="end">UPPER DISPLAY</text>
+          <text x="105" y="382" text-anchor="end">CABINET (CUT)</text>
+
+          <polyline points="248,490 110,490" fill="none" stroke="#111111" stroke-width="0.8" />
+          <text x="105" y="486" text-anchor="end">FULL-HEIGHT</text>
+          <text x="105" y="497" text-anchor="end">MIRROR PANEL</text>
+
+          <polyline points="285,610 110,610" fill="none" stroke="#111111" stroke-width="0.8" />
+          <text x="105" y="606" text-anchor="end">LOWER DISPLAY</text>
+          <text x="105" y="617" text-anchor="end">CABINET (ELEV.)</text>
+
+          <polyline points="355,750 110,750" fill="none" stroke="#111111" stroke-width="0.8" />
+          <text x="105" y="746" text-anchor="end">CURVED CORNER</text>
+          <text x="105" y="757" text-anchor="end">DISPLAY (ELEV.)</text>
+
+          <polyline points="815,335 985,335" fill="none" stroke="#111111" stroke-width="0.8" />
+          <text x="990" y="331" text-anchor="start">BUILT-IN JEWELLERY</text>
+          <text x="990" y="342" text-anchor="start">PANELS (CUT)</text>
+
+          <polyline points="852,490 985,490" fill="none" stroke="#111111" stroke-width="0.8" />
+          <text x="990" y="486" text-anchor="start">INTEGRATED</text>
+          <text x="990" y="497" text-anchor="start">MIRROR PANEL</text>
+
+          <polyline points="815,610 985,610" fill="none" stroke="#111111" stroke-width="0.8" />
+          <text x="990" y="606" text-anchor="start">LOWER DISPLAY</text>
+          <text x="990" y="617" text-anchor="start">CABINET (ELEV.)</text>
+
+          <polyline points="745,750 985,750" fill="none" stroke="#111111" stroke-width="0.8" />
+          <text x="990" y="746" text-anchor="start">CURVED CORNER</text>
+          <text x="990" y="757" text-anchor="start">DISPLAY (ELEV.)</text>
+
+          <text x="410" y="388" text-anchor="middle" font-size="9">BILLING &amp; SERVICE</text>
+          <text x="410" y="488" text-anchor="middle" font-size="8.5" fill="#444444">COUNTER (H: 1050)</text>
+
+          <text x="536" y="552" text-anchor="middle" font-size="9.5" font-weight="700" fill="#111111">GLASS-TOP</text>
+          <text x="536" y="564" text-anchor="middle" font-size="9.5" font-weight="700" fill="#111111">JEWELLERY DISPLAY</text>
+          <text x="645" y="622" text-anchor="start" font-size="9">CENTRAL ISLAND</text>
+          <text x="645" y="633" text-anchor="start" font-size="8.5" fill="#444444">(ELEV. H: 1000)</text>
+          <polyline points="605,575 640,620" fill="none" stroke="#111111" stroke-width="0.8" />
+
+          <text x="550" y="842" text-anchor="middle" font-size="10.5" font-weight="700" letter-spacing="1">OPEN ENTRANCE</text>
+        </g>
+      </g>
+    </svg>
+  </div>
+
+</body>
+</html>
